@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
+from os import getenv as env
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,15 +24,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-5gl_nf9owm=z%z#w&h1a12!&#g!_06^cut5n5=c=_4l!-r32$r'
+SECRET_KEY = 'django-insecure-%@q(kj_4spqd)$b0b9_yjk#ng_7+rbh@4n%!+(ry$f0yf3=@&t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '127.0.0.1','.vercel.app'
+    '127.0.0.1', '.vercel.app'
 ]
-
 
 # Application definition
 
@@ -70,7 +73,6 @@ TEMPLATES = [
     },
 ]
 
-
 WSGI_APPLICATION = 'mysite.wsgi.app'
 
 
@@ -79,8 +81,12 @@ WSGI_APPLICATION = 'mysite.wsgi.app'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env('POSTGRES_DATABASE'),
+        'USER': env('POSTGRES_USER'),
+        'PASSWORD': env('POSTGRES_PASSWORD'),
+        'HOST': env('POSTGRES_HOST'),
+        'PORT': env('POSTGRES_PORT') or '5432',
     }
 }
 

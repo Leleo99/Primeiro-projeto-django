@@ -1,9 +1,13 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'enquetes/style.css' %}">
+
 {% if ultimas_perguntas %}
-<ul>
-{% for pergunta in ultimas_perguntas %}
-    <li><a href="/enquetes/{{pergunta.id}}/">{{pergunta.texto_pergunta }}</a></li>
+    <ul>
+    {% for pergunta in ultimas_perguntas %}
+        <li><a href="{% url 'enquetes:detalhes' pergunta.id %}">{{ pergunta.texto_pergunta }}</a></li>
     {% endfor %}
-</u1>
+    </ul>
 {% else %}
-    <P>Sem enquentes disponiveis.</p>
+    <p>No polls are available.</p>
 {% endif %}

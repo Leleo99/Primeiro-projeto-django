@@ -1,6 +1,6 @@
 env/*
 .env
-.env.development.local
+.env/development.local
 .vercel
-node_modules
-_pycache_
+node_module
+__pycache__

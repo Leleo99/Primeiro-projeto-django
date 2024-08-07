@@ -1,14 +1,3 @@
-# from django.db import models
-
-# class pergunta (models.Model):
-#     texto_pergunta = models.CharField(max_length=200)
-#     data_publicacao = models.DateTimeField("data published")
-
-# class escolha(models.Model):
-#     pergunta = models.ForeignKey(pergunta, on_delete=models.CASCADE)
-#     texto_escolha = models.CharField(max_length=200)
-#     votos = models.IntegerField(default=0)
-
 import datetime
 from django.db import models
 from django.utils import timezone
@@ -17,7 +6,7 @@ from django.utils import timezone
 class Pergunta(models.Model):
     texto_pergunta = models.CharField(max_length=200)
     data_publicacao = models.DateTimeField("date published")
-    def _str_(self):
+    def __str__(self):
         return self.texto_pergunta
 
     def foi_publicado_recente(self):
@@ -28,5 +17,5 @@ class Escolha(models.Model):
     pergunta = models.ForeignKey(Pergunta, on_delete=models.CASCADE)
     texto_escolha = models.CharField(max_length=200)
     votos = models.IntegerField(default=0)
-    def _str_(self):
+    def __str__(self):
         return self.texto_escolha
