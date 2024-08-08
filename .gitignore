@@ -4,3 +4,4 @@ env/*
 .vercel
 node_module
 __pycache__
+mysite/enquetes/__pycache__
